@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import FirstComponent from "./first-component/FirstComponent";
-import io from "socket.io-client";
+// import io from "socket.io-client";
 
 import { useQuery } from "react-query";
-const socket = io("http://localhost:3000/");
+// const socket = io("http://localhost:3000/");
 
 function App() {
   const { data } = useQuery("repoData", () =>
@@ -16,7 +16,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   const increaseCount = () => {
-    socket.emit("message", { id: 25 });
+    // socket.emit("message", { id: 25 });
     setCount((prev) => prev + 1);
   };
 
@@ -26,17 +26,17 @@ function App() {
 
   const shouldShowFirstDiv = count <= 15;
 
-  useEffect(() => {
-    if (!socket.connected) socket.connect();
+  // useEffect(() => {
+  //   if (!socket.connected) socket.connect();
 
-    socket.on("message", (message: string) => {
-      console.log("recieving message", message);
-    });
+  //   socket.on("message", (message: string) => {
+  //     console.log("recieving message", message);
+  //   });
 
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+  //   return () => {
+  //     socket.disconnect();
+  //   };
+  // }, []);
 
   return (
     <>
