@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import FirstComponent from "./first-component/FirstComponent";
-import SecondComponent from "./second-component/SecondComponent";
-
 import io from "socket.io-client";
+
 import { useQuery } from "react-query";
 const socket = io("http://localhost:3000/");
 
 function App() {
-  const { isLoading, error, data } = useQuery("repoData", () =>
+  const { data } = useQuery("repoData", () =>
     fetch("http://localhost:3000/testing").then((res) => res.text())
   );
 
@@ -30,7 +29,7 @@ function App() {
   useEffect(() => {
     if (!socket.connected) socket.connect();
 
-    socket.on("message", (message) => {
+    socket.on("message", (message: string) => {
       console.log("recieving message", message);
     });
 
@@ -46,7 +45,7 @@ function App() {
       {shouldShowFirstDiv ? (
         <FirstComponent count={count} id="15" key={1} />
       ) : (
-        <SecondComponent count={count} key={2} />
+        <div></div>
       )}
     </>
   );
