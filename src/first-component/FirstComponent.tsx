@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface Props {
   count: number;
@@ -7,6 +7,8 @@ interface Props {
 
 const FirstComponent = ({ count, id = "adlk" }: Props) => {
   const [test, settest] = useState(0);
+
+  console.log("id", id);
 
   return (
     <div onClick={() => settest((prev) => prev + 1)}>
