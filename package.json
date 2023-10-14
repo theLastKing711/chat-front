@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://theLastKing711.github.io/chat-front",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
